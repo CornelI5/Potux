@@ -9,8 +9,7 @@ LEGAL & LICENSING
 To keep things fair and clear, this project follows a dual-licensing strategy:
 
 /GPL v2: Linux-compatible components are licensed under the GNU General Public License v2.0.
- /BSD v3: Core architecture and frameworks are licensed under the BSD 3-Clause License.
-
+ /BSD v3: Core architecture and frameworks are licensed under the BSD 3-Clause License.                                          
 Trademark Notice: POTUX is an independent implementation. It is not an official UNIX system, nor is it certified, endorsed, or sponsored by The Open Group. All rights reserved.
 
 STATUS
