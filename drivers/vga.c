@@ -1,12 +1,15 @@
 #include "../include/vga.h"
+#include "../include/io.h"
 
-#define VGA_ADDRESS 0xA0000
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 200
+static unsigned char g_vga_regs[] = {
+    0x5F, 0x4F, 0x50, 0x82, 0x54, 0x80, 0xBF, 0x1F, 
+    0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x9C, 0x0E, 0x8F, 0x28, 0x40, 0x96, 0xB9, 0xA3, 0xFF
+};
 
-void put_pixel(int x, int y, unsigned char color) {
-    if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
-        unsigned char *vga_memory = (unsigned char*)VGA_ADDRESS;
-        vga_memory[(y * SCREEN_WIDTH) + x] = color;
+void vga_init() {
+    for(int i = 0; i < 25; i++) {
+        outb(0x3C4, i);
+        outb(0x3C5, g_vga_regs[i]);
     }
 }
