@@ -8,8 +8,23 @@ static unsigned char g_vga_regs[] = {
 };
 
 void vga_init() {
-    for(int i = 0; i < 25; i++) {
+    outb(0x3C2, 0x63);
+
+    for(int i = 0; i < 5; i++) {
         outb(0x3C4, i);
         outb(0x3C5, g_vga_regs[i]);
+    }
+
+    outb(0x3D4, 0x03); outb(0x3D5, 0x80);
+    outb(0x3D4, 0x11); outb(0x3D5, 0x60);
+    
+    for(int i = 0; i < 25; i++) {
+        outb(0x3D4, i);
+        outb(0x3D5, g_vga_regs[i]);
+    }
+    
+    for(int i = 0; i < 9; i++) {
+        outb(0x3CE, i);
+        outb(0x3CF, g_vga_regs[i + 5]);
     }
 }
